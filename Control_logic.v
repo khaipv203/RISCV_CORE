@@ -1,5 +1,6 @@
 module control_block (
-    input [31:0] inst,
+    input [6:0] opcode, func7,
+    input [2:0] func3,
     output reg [3:0] ALUop,
     output reg regWEn
 );  
@@ -23,20 +24,15 @@ module control_block (
 
 ////////////////////////////////////////////////////////////////////////////////
 
-    wire [6:0] func7, opcode;
-    wire [2:0] func3;
-    assign func7 = inst[31:25];
-    assign func3 = inst[14:12];
-    assign opcode = inst[6:0];
-    always @(inst) begin
+    always @(opcode) begin
         if((opcode == R_Type)|(opcode == I_Format)) begin
             regWEn <= 1;
         end
         else begin
-            regWEn <= 0;
+            regWEn <= regWEn;
         end
     end
-    always @(inst) begin
+    always @(func3 or func7) begin
         if({func7,func3} == ADD) begin
             ALUop <= ADD_op;
         end
@@ -50,7 +46,7 @@ module control_block (
             ALUop <= AND_op;
         end
         else begin
-            ALUop <= 4'b1111;
+            ALUop <= ALUop;
         end
     end
 endmodule

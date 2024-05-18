@@ -1,20 +1,14 @@
 module reg_file (
     input clk, rst_n,
-    input [31:0] inst,
+    input [4:0] rs1, rs2, rd,
     input regWEn,
     input [31:0] DataD, //data in addr_rd
-    output reg [31:0] DataA, DataB //data in addr_rs1 and addr_rs2
+    output [31:0] DataA, DataB //data in addr_rs1 and addr_rs2
 
 );
     reg [31:0] reg_file [31:0];
-    wire [4:0] addr_rs1, addr_rs2, addr_rd;
-    assign addr_rd = inst[11:7];
-    assign addr_rs1 = inst[19:15];
-    assign addr_rs2 = inst[24:20];
     always @(posedge clk or negedge rst_n) begin
         if(!rst_n) begin
-            DataA <= 0;
-            DataB <= 0;
             reg_file[0] <= 0;
             reg_file[1] <= 0;
             reg_file[2] <= 0;
@@ -49,16 +43,15 @@ module reg_file (
             reg_file[31] <= 0;
         end
         else begin
-            DataA <= reg_file[addr_rs1];
-            DataB <= reg_file[addr_rs2];
-        end
-    end
-    always @(DataD) begin
-        if(regWEn) begin
-                reg_file[addr_rd] <= DataD;
+            if(regWEn) begin
+                reg_file[rd] <= DataD;
             end
             else begin
-                reg_file[addr_rd] <= reg_file[addr_rd];
+                reg_file[rd] <= reg_file[rd];
             end
+            
+        end
     end
+    assign DataA = reg_file[rs1];
+    assign DataB = reg_file[rs2];
 endmodule
