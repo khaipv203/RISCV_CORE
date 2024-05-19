@@ -13,13 +13,5 @@ module inst_decode(
     assign rs2 = inst[24:20];
     assign func7 = inst[31:25];
 
-    // Immediate generation for different types of insts
-    // always @(*) begin
-    //     case (opcode)
-    //         7'b0010011: imm = {{20{inst[31]}}, inst[31:20]}; // I-type
-    //         7'b0100011: imm = {{20{inst[31]}}, inst[31:25], inst[11:7]}; // S-type
-    //         7'b1100011: imm = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0}; // B-type
-    //         default: imm = 0;
-    //     endcase
-    // end
+    
 endmodule

@@ -2,7 +2,8 @@ module control_block (
     input [6:0] opcode, func7,
     input [2:0] func3,
     output reg [3:0] ALUop,
-    output reg regWEn
+    output reg regWEn,
+    output reg BSel
 );  
     //opcode parameter
     localparam R_Type = 7'b0110011;
@@ -25,12 +26,22 @@ module control_block (
 ////////////////////////////////////////////////////////////////////////////////
 
     always @(opcode) begin
-        if((opcode == R_Type)|(opcode == I_Format)) begin
+        case (opcode)
+        // if((opcode == R_Type)|(opcode == I_Format)) begin
+        //     regWEn <= 1;
+        // end
+        // else begin
+        //     regWEn <= regWEn;
+        // end
+        R_Type: begin
             regWEn <= 1;
+            BSel <= 0;
         end
-        else begin
-            regWEn <= regWEn;
+        I_Format: begin
+            regWEn <= 1;
+            BSel <= 1;
         end
+        endcase
     end
     always @(func3 or func7) begin
         if({func7,func3} == ADD) begin
