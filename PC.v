@@ -11,7 +11,7 @@ module PC (
             pc_next = pc_next + 1;
         end
         else begin
-            pc_next <= 32'b0;
+            pc_next <= 32'h00000004;
         end
     end
     always @(posedge clk) begin

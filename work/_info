@@ -10,213 +10,213 @@ z2
 cModel Technology
 Z0 dD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE
 vALU
-Z1 !s110 1716137334
+!s110 1716191410
 !i10b 1
-!s100 :Y1C70[UX>D:_8z1j=FNO1
-Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I_afh4B^I0U:bIMO0nKf^B3
-Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s100 KhM;:]I>oGCAcAFZd;]`;3
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I54j@Z`A8O`m51gPW>9=Dh1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1716049248
+w1716191408
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v
-!i122 86
-L0 1 35
-Z4 OV;L;2020.1;71
+!i122 101
+L0 1 125
+Z3 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z5 !s108 1716137334.000000
-Z6 !s107 D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Imm_Gen.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|
-Z7 !s90 -F=D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/vlog.opt|-F=|-reportprogress|300|-work|work|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Imm_Gen.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|
+!s108 1716191410.000000
+!s107 D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|
+!s90 -F=D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/vlog.opt|-F=|-reportprogress|300|-work|work|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|
 !i113 1
-Z8 o-work work
-Z9 tCvgOpt 0
+Z4 o-work work
+Z5 tCvgOpt 0
 n@a@l@u
 vALU_Sel
-!s110 1716137530
+Z6 !s110 1716191234
 !i10b 1
 !s100 UNoU_]aE8D5:Ba8CVei]41
-R2
+R1
 IW9_9?c_ki_KWi55Tc]W5Z3
-R3
+R2
 R0
 w1716136181
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v
-!i122 87
+!i122 100
 L0 1 9
-R4
+R3
 r1
 !s85 0
 31
-!s108 1716137530.000000
-!s107 D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v|
-!s90 -F=D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/vlog.opt|-F=|-reportprogress|300|-work|work|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v|
+Z7 !s108 1716191234.000000
+Z8 !s107 D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/instruction_decode.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Imm_Gen.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|
+Z9 !s90 -F=D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/vlog.opt|-F=|-reportprogress|300|-work|work|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU_Sel.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Imm_Gen.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/instruction_decode.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|
 !i113 1
-R8
-R9
+R4
+R5
 n@a@l@u_@sel
 vcontrol_block
-R1
+R6
 !i10b 1
-!s100 fG`<AX^FAiZ_A2d4Eo9i=2
+!s100 2i^W9<ZO?>>eCAoQ04HVg0
+R1
+I3AUGP=TkN`DcDWDZWzM143
 R2
-I1GUBAhR1gVC]gRmD:fUaH0
-R3
 R0
-w1716136058
+w1716173801
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v
-!i122 86
-L0 1 63
-R4
+!i122 100
+L0 1 85
+R3
 r1
 !s85 0
 31
-R5
-R6
 R7
-!i113 1
 R8
 R9
+!i113 1
+R4
+R5
 vImm_Gen
-R1
+R6
 !i10b 1
 !s100 bjoU`74aio@Lc>SheK@<01
-R2
+R1
 IKQDIMInPP3ok8lO8Ido8B3
-R3
+R2
 R0
 w1716137326
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Imm_Gen.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Imm_Gen.v
-!i122 86
+!i122 100
 L0 1 16
-R4
+R3
 r1
 !s85 0
 31
-R5
-R6
 R7
-!i113 1
 R8
 R9
+!i113 1
+R4
+R5
 n@imm_@gen
 vinst_decode
-!s110 1716050902
+R6
 !i10b 1
-!s100 ;d_?V35JNb:O4j[>z9GT>0
+!s100 TV9AkVC7VJSOm0R8]21RV3
+R1
+I_I;7m=hFYTjIgh_CgP]1V3
 R2
-I@@VV09C5?;A[mo]QT:e7W1
-R3
 R0
-w1716049914
+w1716136040
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/instruction_decode.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/instruction_decode.v
-!i122 78
-L0 1 25
-R4
+!i122 100
+L0 1 17
+R3
 r1
 !s85 0
 31
-!s108 1716050902.000000
-!s107 D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/instruction_decode.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|
-!s90 -reportprogress|300|-work|work|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/ALU.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Control_logic.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/instruction_decode.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|
-!i113 1
+R7
 R8
 R9
+!i113 1
+R4
+R5
 vinst_mem
-R1
+R6
 !i10b 1
-!s100 D=ROZ5?29;4DOXROnBoa]0
+!s100 <nEUh5;K1WYI[ATOk7S_G0
+R1
+I5z;S`ER0=hkhZk0PZR1>J3
 R2
-IjU:a0T0YlOeUjkGHio4KS2
-R3
 R0
-w1716136499
+w1716191222
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/IMEM.v
-!i122 86
+!i122 100
 L0 1 34
-R4
+R3
 r1
 !s85 0
 31
-R5
-R6
 R7
-!i113 1
 R8
 R9
+!i113 1
+R4
+R5
 vPC
-R1
+R6
 !i10b 1
-!s100 j0b`KgcPI74N4XDz?@NM11
+!s100 0>bNP134jgiZoeAKAch7=2
+R1
+IUiWFF7LRCVbYBB[?hJ2<Q1
 R2
-I43f<gPDPHO?[hQ`I_9aAX0
-R3
 R0
-w1716050896
+w1716188356
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/PC.v
-!i122 86
+!i122 100
 L0 1 20
-R4
+R3
 r1
 !s85 0
 31
-R5
-R6
 R7
-!i113 1
 R8
 R9
+!i113 1
+R4
+R5
 n@p@c
 vreg_file
-R1
+R6
 !i10b 1
-!s100 VlDN5`?in5B`13]6W9Hni1
+!s100 OYI66XPUfSAF:WH7X7img1
+R1
+IoTVTY;5ZOnmSbEK6[:Wkh3
 R2
-I=CC0:hMJe:`cDkMgKj@iB2
-R3
 R0
-w1716049165
+w1716190926
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/Register_File.v
-!i122 86
+!i122 100
 L0 1 57
-R4
+R3
 r1
 !s85 0
 31
-R5
-R6
 R7
-!i113 1
 R8
 R9
+!i113 1
+R4
+R5
 vtestblock
-!s110 1716137533
+R6
 !i10b 1
 !s100 IC;H2ZW2IHU[E9EQFRl_c1
-R2
+R1
 IcQ`h<[7<kH]>A?G?W03fA3
-R3
+R2
 R0
 w1716137524
 8D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v
 FD:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v
-!i122 88
+!i122 100
 L0 2 34
-R4
+R3
 r1
 !s85 0
 31
-!s108 1716137533.000000
-!s107 D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|
-!s90 -F=D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/vlog.opt|-F=|-reportprogress|300|-work|work|D:/ModelSim/RISCV_Single_Core/RISCV_SINGLE_CORE/testblock.v|
-!i113 1
+R7
 R8
 R9
+!i113 1
+R4
+R5
