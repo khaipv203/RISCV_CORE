@@ -4,10 +4,15 @@ module testblock (
     reg clk, rst_n;
     wire [31:0] inst;
     wire [31:0] pc;
+    wire pc_sel;
     wire [31:0] imm;
     wire [3:0] ALUop;
-    wire regWEn; 
+    wire regWEn;
+    wire ASel; 
     wire BSel; 
+    wire BrEq;
+    wire BrLT;
+    wire BrUn;
     wire [1:0] memRW;
     wire [4:0] rs1;
     wire [4:0] rs2; 
@@ -27,6 +32,8 @@ module testblock (
         //input
         .clk(clk), 
         .rst_n(rst_n), 
+        .pc_sel(pc_sel),
+        .pc_wb(ALU_out),
 
         //output
         .pc(pc)
@@ -85,13 +92,26 @@ module testblock (
         .DataB(DataB)
     );
 
+    branch_comparator BC
+    (
+        //input
+        .DataA(DataA),
+        .DataB(DataB), 
+        .BrUn(BrUn),
+
+        //output
+        .BrEq(BrEq),
+        .BrLT(BrLT)
+    );
 
     ALU_Sel AS
     (
         //input
         .imm(imm), 
+        .pc(pc),
         .DataA(DataA), 
-        .DataB(DataB), 
+        .DataB(DataB),
+        .ASel(ASel), 
         .BSel(BSel), 
 
         //output
@@ -143,13 +163,19 @@ module testblock (
         .opcode(opcode), 
         .func3(func3), 
         .func7(func7), 
+        .BrEq(BrEq),
+        .BrLT(BrLT),
 
         //output
+        .pc_sel(pc_sel),
         .ALUop(ALUop), 
         .regWEn(regWEn), 
+        .ASel(ASel),
         .BSel(BSel), 
         .memRW(memRW), 
-        .WBsel(WBsel));
+        .WBsel(WBsel),
+        .BrUn(BrUn)
+    );
     always #1 clk = ~clk;
     initial begin
         clk = 0;

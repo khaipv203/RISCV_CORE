@@ -1,18 +1,28 @@
 module control_block (
     input [6:0] opcode, func7,
     input [2:0] func3,
+    input BrLT, BrEq,
+    output reg pc_sel,
     output reg [3:0] ALUop,
     output reg regWEn,
+    output reg BrUn,
+    output reg ASel,
     output reg BSel,
     output reg [1:0] memRW,
     output reg [1:0] WBsel
+    
 );  
+
+    //pc_sel param
+    localparam pc_wb_sel = 1'b1;
+    localparam pc_next_sel = 1'b0;
 
     //opcode parameter
     localparam R_Arith = 7'b0110011;
     localparam I_Arith = 7'b0010011;
     localparam I_Load = 7'b0000011;
     localparam S_Type = 7'b0100011;
+    localparam B_Type = 7'b1100011;
 
     //func7_param
     localparam func7_sub_SRA = 7'b0100000;
@@ -27,6 +37,10 @@ module control_block (
     localparam func3_SR = 3'b101;
     localparam func3_SLT = 3'b010;
 
+    //ALU_sel param
+    localparam other_sel = 1'b1;
+    localparam data_sel = 1'b0;
+
     //ALUop parameter
     localparam ADD_op = 4'b0000;
     localparam SUB_op = 4'b0001;
@@ -36,6 +50,21 @@ module control_block (
     localparam SLL_op = 4'b0101; //Shift Left Logical
     localparam SRL_op = 4'b0110; //Shift Right Logical 
     localparam SRA_op = 4'b0111; //Shift Right Arith
+
+    //Branch comparator param = {BrEq,BrLt, func3}
+    localparam beq = 5'b10000;
+    localparam blt = 5'b01100;
+    localparam bge = 5'b00101;
+    localparam bne_1 = 5'b01001;
+    localparam bne_2 = 5'b00001;
+    localparam branch_Unsigned = 1'b0;
+    localparam branch_Signed = 1'b1;
+
+    // //Branch Func3 Param
+    // localparam beq = 3'b000;
+    // localparam bne = 3'b001;
+    // localparam blt = 3'b100;
+    // localparam bge = 3'b101;
 
     //Reg_file enable param
     localparam enable_write = 1'b1;
@@ -52,16 +81,16 @@ module control_block (
     localparam pc_addr_sel = 2'b10;
     localparam no_WB = 2'b11;
 
-    //ALU_B_sel param
-    localparam imm_sel = 1'b1;
-    localparam dataB_sel = 1'b0;
+    
 ////////////////////////////////////////////////////////////////////////////////
 
     always @(opcode or func7 or func3) begin
         case (opcode)
             R_Arith: begin
+                pc_sel <= pc_next_sel;
                 regWEn <= enable_write;
-                BSel <= dataB_sel;
+                ASel <= data_sel;
+                BSel <= data_sel;
                 WBsel <= alu_out_sel;
                 memRW <= no_access;
                 if(func7 == func7_nor) begin
@@ -83,8 +112,10 @@ module control_block (
                 end
             end
             I_Arith: begin
+                pc_sel <= pc_next_sel;
                 regWEn <= enable_write;
-                BSel <= imm_sel;
+                ASel <= data_sel;
+                BSel <= other_sel;
                 WBsel <= alu_out_sel;
                 memRW <= no_access;
                 case (func3)
@@ -100,18 +131,37 @@ module control_block (
                 endcase
             end  
             I_Load: begin
+                pc_sel <= pc_next_sel;
                 regWEn <= enable_write;
-                BSel <= imm_sel;
+                ASel <= data_sel;
+                BSel <= other_sel;
                 memRW <= read_mem;
                 WBsel <= data_mem_sel;
                 ALUop <= ADD_op;
             end  
             S_Type: begin
+                pc_sel <= pc_next_sel;
                 WBsel <= no_WB;
                 ALUop <= ADD_op;
                 regWEn <= disable_write;
                 memRW <= write_mem;
-                BSel <= imm_sel;
+                ASel <= data_sel;
+                BSel <= other_sel;
+            end
+            B_Type: begin
+                regWEn <= disable_write;
+                memRW <= no_access;
+                ALUop <= ADD_op;
+                ASel <= other_sel;
+                BSel <= other_sel;
+                WBsel <= no_WB;
+                BrUn <= branch_Signed;
+                case ({BrEq, BrLT, func3})
+                    beq, blt, bge, bne_1, bne_2: begin
+                        pc_sel <= pc_wb_sel;
+                    end 
+                    default: pc_sel <= pc_next_sel;
+                endcase
             end
         endcase
     end

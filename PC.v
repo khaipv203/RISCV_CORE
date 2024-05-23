@@ -1,5 +1,6 @@
 module PC (
-    input clk, rst_n,
+    input clk, rst_n, pc_sel,
+    input [31:0] pc_wb,
     output reg [31:0] pc
 );  
     reg [31:0] pc_next;
@@ -8,11 +9,16 @@ module PC (
             pc_next <= 32'h00000000;
         end
         else if(pc_next > 32'h00000023) begin
-            pc_next <= 32'h0000000C;
+            pc_next <= 32'h00000024;
         end
         else begin
-            pc_next <= pc_next + 4;
-            pc <= pc_next;
+            if(pc_sel) begin
+                pc_next <= pc_wb;
+            end
+            else begin
+                pc_next <= pc_next + 4;
+            end
         end
+        pc <= pc_next;
     end
 endmodule

@@ -23,6 +23,7 @@ module ALU (
     reg [31:0]      shift_left_2_r;
     reg [31:0]      shift_left_4_r;
     reg [31:0]      shift_left_8_r;
+
     always @(op1 or op2 or ALUop) begin
 
         shift_right_fill_r = 16'b0;

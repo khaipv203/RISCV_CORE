@@ -6,15 +6,15 @@ module inst_mem (
     reg [7:0] mem_cell [39:0];
     always @(negedge rst_n) begin
         if(!rst_n) begin
-            mem_cell[0] <= 8'h93;//slli x15, x15, 1
-            mem_cell[1] <= 8'h97;
-            mem_cell[2] <= 8'h17;
+            mem_cell[0] <= 8'h83;//lw x15, 8(x17)
+            mem_cell[1] <= 8'ha7;
+            mem_cell[2] <= 8'h88;
             mem_cell[3] <= 8'h00;
-            mem_cell[4] <= 8'h23;//sw x15, 8(x17)
-            mem_cell[5] <= 8'ha4;
-            mem_cell[6] <= 8'hf8;
+            mem_cell[4] <= 8'h93;//slli x15, x15, 1
+            mem_cell[5] <= 8'h97;
+            mem_cell[6] <= 8'h17;
             mem_cell[7] <= 8'h00;
-            mem_cell[8] <= 8'hb3;//add x17, x15, x16
+            mem_cell[8] <= 8'h63;//beq x15, x16, 16
             mem_cell[9] <= 8'h88;
             mem_cell[10] <= 8'h07;
             mem_cell[11] <= 8'h01;
@@ -30,15 +30,19 @@ module inst_mem (
             mem_cell[21] <= 8'h00;
             mem_cell[22] <= 8'h00;
             mem_cell[23] <= 8'h00;
-            mem_cell[24] <= 8'h13; 
-            mem_cell[25] <= 8'h00;
-            mem_cell[26] <= 8'h00;
+            mem_cell[24] <= 8'hb3;//add x17, x15, x15
+            mem_cell[25] <= 8'h88;
+            mem_cell[26] <= 8'hf7;
             mem_cell[27] <= 8'h00;
+            // mem_cell[24] <= 8'h13;
+            // mem_cell[25] <= 8'h00;
+            // mem_cell[26] <= 8'h00;
+            // mem_cell[27] <= 8'h00;
             mem_cell[28] <= 8'h13;
             mem_cell[29] <= 8'h00;
-            mem_cell[30] <= 8'h00;//slli x15, x15, 1
-            mem_cell[31] <= 8'h00;//slli x15, x15, 1
-            mem_cell[32] <= 8'h13;//slli x15, x15, 1 = 8 + 8 = 16
+            mem_cell[30] <= 8'h00;
+            mem_cell[31] <= 8'h00;
+            mem_cell[32] <= 8'h13;
             mem_cell[33] <= 8'h00;
             mem_cell[34] <= 8'h00; 
             mem_cell[35] <= 8'h00;
