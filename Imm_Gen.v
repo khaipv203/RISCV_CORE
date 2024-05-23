@@ -7,7 +7,7 @@ module Imm_Gen (
 
     always @(inst) begin
         case (opcode)
-            7'b0010011: imm = {{20{inst[31]}}, inst[31:20]}; // I-type
+            7'b0010011, 7'b0000011: imm = {{20{inst[31]}}, inst[31:20]}; // I-type, I_Load
             7'b0100011: imm = {{20{inst[31]}}, inst[31:25], inst[11:7]}; // S-type
             7'b1100011: imm = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0}; // B-type
             default: imm = 0;

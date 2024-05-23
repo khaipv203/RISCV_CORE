@@ -113,7 +113,7 @@ module ALU (
                 ALU_out = (op1 < op2) ? 32'b1 : 32'b0;
             end
             default: begin
-                ALU_out <= ALU_out;
+                ALU_out <= 32'b0;
             end
         endcase
         // if(ALUop == AND_op) ALU_out <= op1 & op2;

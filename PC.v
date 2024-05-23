@@ -7,14 +7,12 @@ module PC (
         if(!rst_n) begin
             pc_next <= 32'h00000000;
         end
-        else if(pc_next < 9) begin
-            pc_next = pc_next + 1;
+        else if(pc_next > 32'h00000023) begin
+            pc_next <= 32'h0000000C;
         end
         else begin
-            pc_next <= 32'h00000004;
+            pc_next <= pc_next + 4;
+            pc <= pc_next;
         end
-    end
-    always @(posedge clk) begin
-        pc <= pc_next;
     end
 endmodule
