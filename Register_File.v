@@ -17,7 +17,7 @@ module reg_file (
             reg_file[5] <= 0;
             reg_file[6] <= 0;
             reg_file[7] <= 0;
-            reg_file[8] <= 0;
+            reg_file[8] <= 19;
             reg_file[9] <= 0;
             reg_file[10] <= 0;
             reg_file[11] <= 0;

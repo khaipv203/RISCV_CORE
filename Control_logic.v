@@ -12,13 +12,13 @@ module control_block (
     localparam R_Arith = 7'b0110011;
     localparam I_Arith = 7'b0010011;
     localparam I_Load = 7'b0000011;
-    // localparam R_Arith = 7'b0110011;
+    localparam S_Type = 7'b0100011;
 
     //func7_param
     localparam func7_sub_SRA = 7'b0100000;
     localparam func7_nor = 7'b0000000;
 
-    //func3 param
+    //Arithmetic func3 param
     localparam func3_ADD = 3'b000;
     localparam func3_XOR = 3'b100;
     localparam func3_OR = 3'b110;
@@ -50,6 +50,7 @@ module control_block (
     localparam data_mem_sel = 2'b00;
     localparam alu_out_sel = 2'b01;
     localparam pc_addr_sel = 2'b10;
+    localparam no_WB = 2'b11;
 
     //ALU_B_sel param
     localparam imm_sel = 1'b1;
@@ -105,6 +106,13 @@ module control_block (
                 WBsel <= data_mem_sel;
                 ALUop <= ADD_op;
             end  
+            S_Type: begin
+                WBsel <= no_WB;
+                ALUop <= ADD_op;
+                regWEn <= disable_write;
+                memRW <= write_mem;
+                BSel <= imm_sel;
+            end
         endcase
     end
         

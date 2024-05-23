@@ -10,9 +10,9 @@ module inst_mem (
             mem_cell[1] <= 8'h97;
             mem_cell[2] <= 8'h17;
             mem_cell[3] <= 8'h00;
-            mem_cell[4] <= 8'h03;//lw x16, 8(x17)
-            mem_cell[5] <= 8'ha8;
-            mem_cell[6] <= 8'h88;
+            mem_cell[4] <= 8'h23;//sw x15, 8(x17)
+            mem_cell[5] <= 8'ha4;
+            mem_cell[6] <= 8'hf8;
             mem_cell[7] <= 8'h00;
             mem_cell[8] <= 8'hb3;//add x17, x15, x16
             mem_cell[9] <= 8'h88;

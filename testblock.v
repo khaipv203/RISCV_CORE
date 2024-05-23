@@ -19,7 +19,6 @@ module testblock (
     wire [31:0] ALU_out; 
     wire [31:0] DataA; 
     wire [31:0] DataB;
-    wire [31:0] data_in;
     wire [31:0] data_out;
     wire [31:0] WB_Data;
     wire [1:0] WBsel;
@@ -120,7 +119,7 @@ module testblock (
         .rst_n(rst_n), 
         .memRW(memRW), 
         .addr(ALU_out), 
-        .data_in(data_in), 
+        .data_in(DataB), 
 
         //output
         .data_out(data_out)

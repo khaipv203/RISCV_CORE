@@ -3,10 +3,12 @@ module wb_sel (
     input [31:0] ALU_out, data_out, 
     output [31:0] WB_Data
 );
-    localparam DataR = 2'b00;
-    localparam ALU = 2'b01;
-    localparam Addr = 2'b10;
+    //WB param
+    localparam data_mem_sel = 2'b00;
+    localparam alu_out_sel = 2'b01;
+    localparam pc_addr_sel = 2'b10;
+    localparam no_WB = 2'b11;
     
-    assign WB_Data = (WBsel == DataR) ? data_out :
-                     (WBsel == ALU) ? ALU_out : 32'b0;
+    assign WB_Data = (WBsel == data_mem_sel) ? data_out :
+                     (WBsel == alu_out_sel) ? ALU_out : 32'b0;
 endmodule
