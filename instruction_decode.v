@@ -1,17 +1,44 @@
-module inst_decode(
-    input [31:0] inst,
-    output [4:0] rs1, rs2, rd,
-    output [6:0] opcode,
-    output [2:0] func3,
-    output [6:0] func7
-    //output [31:0] imm
-);
-    assign opcode = inst[6:0];
-    assign rd = inst[11:7];
-    assign func3 = inst[14:12];
-    assign rs1 = inst[19:15];
-    assign rs2 = inst[24:20];
-    assign func7 = inst[31:25];
+module ID (
 
-    
+);
+    Imm_Gen IMG
+    (
+        //input
+        .inst(inst), 
+        
+        //output
+        .imm(imm)
+    );
+
+
+    inst_decode ID
+    (
+        //input
+        .inst(inst), 
+        .rs1(rs1), 
+        .rs2(rs2), 
+        .rd(rd), 
+
+        //output
+        .opcode(opcode), 
+        .func3(func3), 
+        .func7(func7)
+    );
+
+
+    reg_file reg_block
+    (   
+        //input
+        .clk(clk), 
+        .rst_n(rst_n), 
+        .regWEn(regWEn), 
+        .DataD(WB_Data), 
+        .rs1(rs1), 
+        .rs2(rs2), 
+        .rd(rd), 
+
+        //output
+        .DataA(DataA), 
+        .DataB(DataB)
+    );
 endmodule

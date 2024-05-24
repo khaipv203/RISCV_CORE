@@ -14,9 +14,9 @@ module inst_mem (
             mem_cell[5] <= 8'h97;
             mem_cell[6] <= 8'h17;
             mem_cell[7] <= 8'h00;
-            mem_cell[8] <= 8'h63;//beq x15, x16, 16
-            mem_cell[9] <= 8'h88;
-            mem_cell[10] <= 8'h07;
+            mem_cell[8] <= 8'he7;//jalr x1, 16(x16)
+            mem_cell[9] <= 8'h00;
+            mem_cell[10] <= 8'h08;
             mem_cell[11] <= 8'h01;
             mem_cell[12] <= 8'h13;
             mem_cell[13] <= 8'h00;

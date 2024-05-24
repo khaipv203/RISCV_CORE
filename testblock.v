@@ -4,12 +4,13 @@ module testblock (
     reg clk, rst_n;
     wire [31:0] inst;
     wire [31:0] pc;
+    wire [31:0] pc_added;
     wire pc_sel;
     wire [31:0] imm;
     wire [3:0] ALUop;
     wire regWEn;
-    wire ASel; 
-    wire BSel; 
+    wire [1:0] ASel; 
+    wire [1:0] BSel; 
     wire BrEq;
     wire BrLT;
     wire BrUn;
@@ -27,6 +28,7 @@ module testblock (
     wire [31:0] data_out;
     wire [31:0] WB_Data;
     wire [1:0] WBsel;
+    /////////////////////////////////////////////////////////////////
     PC pc_block
     (
         //input
@@ -34,11 +36,20 @@ module testblock (
         .rst_n(rst_n), 
         .pc_sel(pc_sel),
         .pc_wb(ALU_out),
+        .pc_added(pc_added),
 
         //output
         .pc(pc)
     );
 
+    pc_adder PA
+    (
+        //input
+        .pc(pc),
+        
+        //output
+        .pc_added(pc_added)
+    );
 
     inst_mem IMEM
     (
@@ -49,7 +60,7 @@ module testblock (
         //output
         .inst(inst)
     );
-
+//////////////////////////////////////////////////////////////////////////////////////////
 
     Imm_Gen IMG
     (
@@ -82,7 +93,7 @@ module testblock (
         .clk(clk), 
         .rst_n(rst_n), 
         .regWEn(regWEn), 
-        .DataD(ALU_out), 
+        .DataD(WB_Data), 
         .rs1(rs1), 
         .rs2(rs2), 
         .rd(rd), 
@@ -91,6 +102,8 @@ module testblock (
         .DataA(DataA), 
         .DataB(DataB)
     );
+//////////////////////////////////////////////////////////////////////////////////////////
+
 
     branch_comparator BC
     (
@@ -131,6 +144,7 @@ module testblock (
         .ALU_out(ALU_out)
     );
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
     data_mem DM
     (
@@ -145,18 +159,21 @@ module testblock (
         .data_out(data_out)
     );
 
+
+///////////////////////////////////////////////////////////////////////////
     wb_sel WB
     (
         //input
         .WBsel(WBsel), 
         .ALU_out(ALU_out), 
         .data_out(data_out),
+        .pc_added(pc_added),
 
         //output 
         .WB_Data(WB_Data)
     );
 
-
+///////////////////////////////////////////////////////////////////////////
     control_block ctrl_unit
     (
         //input
@@ -183,9 +200,5 @@ module testblock (
         rst_n = 0; #20;
         rst_n = 1;
 
-        // ALUop = 4'b0001;
-        // inst = 32'b00000001000001111000111010110011;
-        // DataA = 6;
-        // DataB = 8;
     end
 endmodule

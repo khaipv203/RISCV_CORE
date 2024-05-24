@@ -6,8 +6,8 @@ module control_block (
     output reg [3:0] ALUop,
     output reg regWEn,
     output reg BrUn,
-    output reg ASel,
-    output reg BSel,
+    output reg [1:0] ASel,
+    output reg [1:0] BSel,
     output reg [1:0] memRW,
     output reg [1:0] WBsel
     
@@ -23,6 +23,11 @@ module control_block (
     localparam I_Load = 7'b0000011;
     localparam S_Type = 7'b0100011;
     localparam B_Type = 7'b1100011;
+    localparam JALR = 7'b1100111;
+    localparam JAL = 7'b1101111;
+    localparam LUI = 7'b0110111;
+    localparam AUIPC = 7'b0010111;
+
 
     //func7_param
     localparam func7_sub_SRA = 7'b0100000;
@@ -38,8 +43,9 @@ module control_block (
     localparam func3_SLT = 3'b010;
 
     //ALU_sel param
-    localparam other_sel = 1'b1;
-    localparam data_sel = 1'b0;
+    localparam other_sel = 2'b01;
+    localparam data_sel = 2'b10;
+    localparam no_sel = 2'b00;
 
     //ALUop parameter
     localparam ADD_op = 4'b0000;
@@ -93,6 +99,7 @@ module control_block (
                 BSel <= data_sel;
                 WBsel <= alu_out_sel;
                 memRW <= no_access;
+                BrUn <= branch_Signed;
                 if(func7 == func7_nor) begin
                     case (func3)
                         func3_ADD: ALUop <= ADD_op;
@@ -118,6 +125,7 @@ module control_block (
                 BSel <= other_sel;
                 WBsel <= alu_out_sel;
                 memRW <= no_access;
+                BrUn <= branch_Signed;
                 case (func3)
                     func3_ADD: ALUop <= ADD_op;
                     func3_XOR: ALUop <= XOR_op;
@@ -138,6 +146,7 @@ module control_block (
                 memRW <= read_mem;
                 WBsel <= data_mem_sel;
                 ALUop <= ADD_op;
+                BrUn <= branch_Signed;
             end  
             S_Type: begin
                 pc_sel <= pc_next_sel;
@@ -147,6 +156,7 @@ module control_block (
                 memRW <= write_mem;
                 ASel <= data_sel;
                 BSel <= other_sel;
+                BrUn <= branch_Signed;
             end
             B_Type: begin
                 regWEn <= disable_write;
@@ -162,6 +172,46 @@ module control_block (
                     end 
                     default: pc_sel <= pc_next_sel;
                 endcase
+            end
+            JALR: begin
+                regWEn <= enable_write;
+                memRW <= no_access;
+                ALUop <= ADD_op;
+                ASel <= other_sel;
+                BSel <= other_sel;
+                WBsel <= pc_addr_sel;
+                BrUn <= branch_Signed;
+                pc_sel <= pc_wb_sel;
+            end
+            JAL: begin
+                regWEn <= enable_write;
+                memRW <= no_access;
+                ALUop <= ADD_op;
+                ASel <= other_sel;
+                BSel <= other_sel;
+                WBsel <= pc_addr_sel;
+                BrUn <= branch_Signed;
+                pc_sel <= pc_wb_sel;
+            end
+            LUI: begin
+                regWEn <= enable_write;
+                memRW <= no_access;
+                ALUop <= ADD_op;
+                ASel <= no_sel;
+                BSel <= other_sel;
+                WBsel <= alu_out_sel;
+                BrUn <= branch_Signed;
+                pc_sel <= pc_next_sel;
+            end
+            AUIPC: begin
+                regWEn <= enable_write;
+                memRW <= no_access;
+                ALUop <= ADD_op;
+                ASel <= other_sel;
+                BSel <= other_sel;
+                WBsel <= alu_out_sel;
+                BrUn <= branch_Signed;
+                pc_sel <= pc_next_sel;
             end
         endcase
     end
