@@ -34,10 +34,6 @@ module inst_mem (
             mem_cell[25] <= 8'h88;
             mem_cell[26] <= 8'hf7;
             mem_cell[27] <= 8'h00;
-            // mem_cell[24] <= 8'h13;
-            // mem_cell[25] <= 8'h00;
-            // mem_cell[26] <= 8'h00;
-            // mem_cell[27] <= 8'h00;
             mem_cell[28] <= 8'h13;
             mem_cell[29] <= 8'h00;
             mem_cell[30] <= 8'h00;

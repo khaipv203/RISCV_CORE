@@ -1,6 +1,17 @@
 module EX (
-    ports
+    input [31:0] DataA, DataB,
+    input [1:0] ASel,
+    input [1:0] BSel,
+    input BrUn,
+    input [31:0] pc,
+    input [31:0] imm,
+    input [3:0] ALUop
+    output BrEq,
+    output BrLT,
+    output [31:0] ALU_out,
 );
+    wire [31:0] op1, op2;
+
     branch_comparator BC
     (
         //input

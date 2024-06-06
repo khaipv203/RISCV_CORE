@@ -1,6 +1,14 @@
 module ID (
-
+    input clk, rst_n, regWEn,
+    input [31:0] inst,
+    input [31:0] WB_Data,
+    output [31:0] imm,
+    output [31:0] DataA, DataB
+    output [6:0] opcode, func7,
+    output [2:0] func3
 );
+    wire [4:0] rs1, rs2, rd;
+
     Imm_Gen IMG
     (
         //input

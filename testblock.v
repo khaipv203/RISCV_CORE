@@ -61,7 +61,12 @@ module testblock (
         .inst(inst)
     );
 //////////////////////////////////////////////////////////////////////////////////////////
+    reg [31:0] IF_ID_PC;
+    reg [31:0] IF_ID_inst;
 
+    
+
+/////////////////////////////////////////////////////////////////////////////////////////
     Imm_Gen IMG
     (
         //input
@@ -104,7 +109,25 @@ module testblock (
     );
 //////////////////////////////////////////////////////////////////////////////////////////
 
+    reg [31:0] ID_EX_PC;
+    reg [31:0] ID_EX_rs1;
+    reg [31:0] ID_EX_rs2;
+    reg [31:0] ID_EX_DataA;
+    reg [31:0] ID_EX_DataB;
+    reg [31:0] ID_EX_imm;
+    reg [31:0] ID_EX_inst;
 
+
+    reg ID_EX_pc_sel;
+    reg [3:0] ID_EX_ALUop;
+    reg ID_EX_regWEn;
+    reg ID_EX_BrUn;
+    reg [1:0] ID_EX_ASel;
+    reg [1:0] ID_EX_BSel;
+    reg [1:0] ID_EX_memRW;
+    reg [1:0] ID_EX_WBsel;
+
+//////////////////////////////////////////////////////////////////////////////////////////
     branch_comparator BC
     (
         //input
@@ -146,6 +169,16 @@ module testblock (
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+    reg [31:0] EX_MA_PC;
+    reg [31:0] EX_MA_ALU_out;
+    reg [31:0] EX_MA_DataB;
+    reg [31:0] EX_MA_inst;
+
+    reg [1:0] EX_MA_memRW;
+    reg [1:0] EX_MA_WBsel;
+    reg EX_MA_pc_sel;
+    reg EX_MA_regWEn;
+/////////////////////////////////////////////////////////////////////////////////////////
     data_mem DM
     (
         //input
@@ -158,8 +191,13 @@ module testblock (
         //output
         .data_out(data_out)
     );
+//////////////////////////////////////////////////////////////////////////
 
+    reg [31:0] MA_WB_inst;
+    reg [31:0] MA_WB_DataWB;
 
+    reg MA_WB_regWEn;
+    reg [1:0] MA_WB_WBsel;
 ///////////////////////////////////////////////////////////////////////////
     wb_sel WB
     (
